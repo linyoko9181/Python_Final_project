@@ -1,0 +1,1 @@
+[('burger', 324), ('fry', 164), ('food', 130), ('place', 78), ('service', 77), ('price', 43), ('hamburger', 38), ('peanut', 38), ('guy', 37), ('staff', 36)]

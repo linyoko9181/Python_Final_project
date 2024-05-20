@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1 id="sentiment">Positive Reviews</h1>
+    <h2>Rating: {{rating}}</h2>
+    <div>
+        <form id="labels" action="/positive" method="POST">
+            {% for label in labels %}
+            <button type="submit" name="Label" value="{{ label[0] }}">{{ label[0] }}</button>
+            {% endfor %}
+        </form>
+        <article>
+            <p>{{ displayed_text }}</p>
+            <form action="{{ url_for('show_negative_review') }}">
+                <button type="submit">Negative Reviews</button>
+            </form>
+        </acticle>
+    </div> 
+</body>
+</html>

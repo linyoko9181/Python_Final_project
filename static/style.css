@@ -1,0 +1,62 @@
+body {
+    background: linear-gradient(to right, #f6d365, #fda085);
+    color: #333;
+    text-align: center;
+}
+
+h1{
+    margin: 10%
+}
+
+form input[type="text"] {
+    font-size: 150%;
+}
+
+label{
+    font-size: 150%;
+}
+
+button{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 20px 60px;
+    color:rgb(65, 64, 64);
+    background-color: rgb(255, 250, 226);
+    /* background-image: linear-gradient(to right, #f6d365, #fda085); */
+    border-color: aliceblue;
+    border-radius: 30px;
+    margin:5%;
+}
+
+button:hover{
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#sentiment{
+    margin-top: 5%;
+    margin-bottom: 2%;
+    border: 5%
+}
+
+div{
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 5vh 5vh 5vh;
+}
+
+#labels button {
+    padding: 5px 30px;
+    margin: 5px;
+    border: 10px;
+}
+
+p{
+    background-color: rgb(255, 250, 226);
+    padding: 4vh;
+    padding-top: 10vh;
+    padding-bottom: 20vh;
+    border-radius: 10px;
+    height: 15vh; /* Fixed height */
+    overflow: auto; 
+}

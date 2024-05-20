@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review type</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Restaurant: {{restaurant_name}}</h1>
+    <h2>Rating: {{rating}}</h2>
+    <h1>Select Review Type</h1>
+    <form action="{{ url_for('show_positive_review') }}">
+        <button type="submit">Positive Reviews</button>
+    </form>
+    <form action="{{ url_for('show_negative_review') }}">
+        <button type="submit">Negative Reviews</button>
+    </form>
+</body>
+</html>
