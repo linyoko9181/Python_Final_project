@@ -1,1 +1,1 @@
-[('burger', 32), ('place', 18), ('food', 15), ('order', 15), ('fry', 13), ('guy', 10), ('staff', 9), ('service', 8), ('taste', 6), ('time', 5)]
+[('burger', 33), ('place', 19), ('food', 15), ('order', 15), ('fry', 13), ('staff', 9), ('service', 8), ('taste', 7), ('time', 5), ('people', 5)]
