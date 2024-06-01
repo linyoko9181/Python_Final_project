@@ -3,7 +3,6 @@ import spacy
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 
-
 # Check if CUDA is available
 if torch.cuda.is_available():
     # Set the GPU device to use
@@ -12,40 +11,43 @@ if torch.cuda.is_available():
 else:
     print("CUDA is not available, using CPU")
 
+# Function to preprocess data
 def preprocess_data():
-    # read the csv file
-    csv_path = 'C:\\Users\\yanso\\Documents\\FinalProject\\original_code/reviews.csv'
+    # Read the CSV file
+    csv_path = 'C:\\Users\\yanso\\Documents\\FinalProject/reviews.csv'
     df = pd.read_csv(csv_path)
-    # delete additonal columns
-    columns_to_drop_indices = [3,4,7,8,9,10,11]
+    # Delete additional columns
+    columns_to_drop_indices = [3, 4, 7, 8, 9, 10, 11]
     df.drop(df.columns[columns_to_drop_indices], inplace=True, axis=1)
-    # change the name of the columns
+    # Change the name of the columns
     new_column_names = ['User Photo', 'User Name', 'Rank', 'Time', 'text']
     df.columns = new_column_names
-    # delete not useful text: nonascii and emtpy columns
+    # Delete non-ASCII and empty columns
     df = df[df['text'].astype(str).map(lambda x: x.isascii())]
     df = df.dropna()
-    #download the file 
+    # Download the file 
     csv_path = 'Data.csv'
     df.to_csv(csv_path, index=False)
     return df
 
+# Function to calculate sentiment score
 def sentiment_score(review, device):
     tokenizer = AutoTokenizer.from_pretrained('nlptown/bert-base-multilingual-uncased-sentiment')
     model = AutoModelForSequenceClassification.from_pretrained('nlptown/bert-base-multilingual-uncased-sentiment').to(device)
     tokens = tokenizer.encode(review, return_tensors='pt').to(device)
     result = model(tokens)
-    return int(torch.argmax(result.logits))+1
+    return int(torch.argmax(result.logits)) + 1
 
+# Preprocess the data
 reviews = preprocess_data()
 
-#get the sentiment score 
+# Get the sentiment score 
 reviews['sentiment'] = reviews['text'].apply(lambda x: sentiment_score(x[:512], device))
 sentiment_avg = reviews['sentiment'].mean()
-print(f"rating:{sentiment_avg}")
+print(f"rating: {sentiment_avg}")
 
-#create positive reviews dataframe and negative reviews dataframe
-positive = reviews[reviews['sentiment']>3].copy()
-negative = reviews[reviews['sentiment']<3].copy()
+# Create positive and negative reviews dataframes
+positive = reviews[reviews['sentiment'] > 3].copy()
+negative = reviews[reviews['sentiment'] < 3].copy()
 positive.to_csv('positive.csv', index=False)
 negative.to_csv('negative.csv', index=False)
