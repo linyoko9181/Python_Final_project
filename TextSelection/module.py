@@ -4,7 +4,7 @@ import pandas as pd
 
 # Function to select a random sentence containing a specified word
 def text_selector(sentiment, string):
-    
+
     # Load spaCy's English model
     nlp = spacy.load("en_core_web_sm")
 
